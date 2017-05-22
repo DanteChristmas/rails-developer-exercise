@@ -49,9 +49,10 @@ class ProjectsController < ApplicationController
 
   def clear
     @project.items.complete.destroy_all
+    notice = @project.items.any? ? 'Completed items were successfully cleared.' : 'There are no completed items for this project.'
     respond_to do |format|
       format.html { redirect_to project_path(@project),
-                    :notice => 'Completed items were successfully cleared.' }
+                    :notice =>  notice }
     end
   end
 
@@ -64,4 +65,3 @@ private
     params.require(:project).permit(:title)
   end
 end
-

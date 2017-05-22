@@ -165,5 +165,16 @@ RSpec.describe ProjectsController, :type => :controller do
       delete :clear, { :id => project.to_param }
       expect(project.reload.items.count).to eq(0)
     end
+
+    it 'should return a flash message notifying that all items are clear' do
+      project.items.first.update(:done => true)
+      delete :clear, { id: project.to_param }
+      expect(flash.notice).to match(/There are no completed items for this project./)
+    end
+
+    it 'should return a flash message notifying that only completed items are clear' do
+      delete :clear, { id: project.to_param }
+      expect(flash.notice).to match(/Completed items were successfully cleared./)
+    end
   end
 end
