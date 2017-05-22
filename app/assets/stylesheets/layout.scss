@@ -1,94 +1,26 @@
 /* HTML5 reset */
 
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
-  display:block;
-}
-
-mark {
-  background-color:#ff9;
-  color:#000;
-  font-style:italic;
-  font-weight:bold;
-}
-
-/* end HTML5 reset */
-
-/* reset */
-body, p, h1, h2, h3, h4, h5, h6, ul, li, form {
-  margin: 0;
-  padding: 0;
-  line-height: 18px;
-}
-p, h2, h3, h4, h5, h6 {
-  margin-bottom: 18px;
-}
-/* end reset */
-
-/* font stacks */
 body {
-    font-family: Baskerville, 'Times New Roman', Times, serif;
+  margin: 0 2% 0 2%;
 }
-h1, h2, h3, h4, h5 {
-  font-family: Georgia, Times, 'Times New Roman', serif;
-}
-/* end font stacks */
-
-body {
-  width: 900px;
-  margin: 0px auto;
-  background-color: white;
-}
-
-nav {
-  li {
-    list-style: none;
-  }
-}
-
 header {
-  height: 108px;
-  width: 100%;
-
-  background-color: #eee;
-  border: 1px solid #ccc;
-
-  h1 {
-    font-size: 32px;
-    padding: 18px 18px 0px 18px;
+  .jumbotron { margin-bottom: 0;}
+  .navbar-toggle {
+    border-color: #999;
+    .icon-bar { background-color: #777;}
   }
-  p {
-    font-size: small;
-    padding-left: 36px;
-  }
-  ul {
-    margin-top: 36px;
-    width: 594px;
-  }
-  li {
-    float: left;
-    display: inline;
-    width: 145px;
-    text-align: center;
-    height: 25%;
-    a {
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  }
-  li.selected {
-  }
-  li:last-child { border-right: none; }
 }
 
 #main {
   border: 1px solid #ccc;
   margin-top: 9px;
   margin-bottom: 9px;
-  width: 863px;
-  padding: 18px;
+  // width: 863px;
+  // padding: 18px;
   display: block;
+
+  .project_toolbar, .item_toolbar, .actions, .field { margin-bottom: 10px;}
+
   a, a:link, a:visited, a:active {
     text-decoration: none;
     font-weight: bold;
@@ -102,7 +34,6 @@ header {
   }
   ul {
     width: 70%;
-    margin-left: 129px;
   }
   li {
     list-style: none;
@@ -124,14 +55,13 @@ header {
     text-align: center;
   }
   #notice {
-    background-color: #ffa;
-    text-align: center;
+    // background-color: #ffa;
+    // text-align: center;
   }
 }
 
 footer {
   height: 36px;
-  width: 100%;
   text-align: center;
   clear: both;
   p { margin-bottom: 0; }

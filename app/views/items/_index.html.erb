@@ -1,21 +1,25 @@
-<ul>
-  <% if @project.items.empty? %>
-  <li>No items.</li>
-  <% end %>
-<% @project.items.each do |item| %>
-  <li class="<%= "#{item.done? ? 'done' : 'not-done'}" %>">
-    <%= link_to item.action, edit_project_item_path(@project, item) %>
-    <% unless item.done? %>
-      <%= button_to 'Done',
-            { :controller => :items, :action => :update,
-              :id => item.id, :project_id => @project.id,
-              :item => { :done => true } },
-            { :method => :patch } %>
+<div class="col-xs-12">
+  <ul class="list-group">
+    <% if @project.items.empty? %>
+    <li>No items.</li>
     <% end %>
-  </li>
-<% end %>
-</ul>
+  <% @project.items.each do |item| %>
+    <li class="<%= "#{item.done? ? 'done' : 'not-done'}" %>">
+      <%= link_to item.action, edit_project_item_path(@project, item) %>
+      <% unless item.done? %>
+        <%= button_to 'Done',
+              { :controller => :items, :action => :update,
+                :id => item.id, :project_id => @project.id,
+                :item => { :done => true } },
+              { :method => :patch } %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>
 
-<%= link_to 'New Item', new_project_item_path(project) %>
-<%= link_to 'Clear Completed Items', clear_project_path(project),
-      :method => :delete, :id => "clearer" %>
+<div class="col-xs-12 item_toolbar">
+  <%= link_to 'New Item', new_project_item_path(project), class: "btn btn-primary" %>
+  <%= link_to 'Clear Completed Items', clear_project_path(project),
+        :method => :delete, :id => "clearer", class: "btn btn-danger" %>
+</div>
