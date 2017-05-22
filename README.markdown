@@ -1,6 +1,14 @@
 # Rails Developer Exercise
 ## (Semi Broken) Todo App!
 
+## COMMENTS
+There's a minor clash with the acceptance criteria here.  In order to deal
+with the Project title uniqueness issue, I have implemented both a uniqueness
+model validation check and added a unique index to the projects table title
+column.  After implementing soft delete this creates an issue where a project
+title can not be duplicated even after it has been "deleted". I've decided to
+just leave the unique index in place until it can be clarified.
+
 ## INSTRUCTIONS
 
 Your task with this excercise is to fix the bugs and improve the application
@@ -32,4 +40,3 @@ Do as much as you can within 4 hours of effort. Thanks!
   deleted in the database and hide them from the UI, but don't actually delete
   them from the database.
 - () The UI is a mess. Try and clean it up a bit and make it consistent.
-
