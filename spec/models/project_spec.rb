@@ -20,5 +20,7 @@ RSpec.describe Project, :type => :model do
       expect(subject).to_not be_valid
       expect(subject.errors.keys).to eq [:title]
     end
+
+    it { should validate_uniqueness_of(:title) }
   end
 end
