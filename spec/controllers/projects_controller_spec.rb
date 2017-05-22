@@ -139,6 +139,7 @@ RSpec.describe ProjectsController, :type => :controller do
     it "redirects to the projects list" do
       project = Project.create! valid_attributes
       delete :destroy, {:id => project.to_param}, valid_session
+      expect(project[:deleted_at]).should_not be_nil
       expect(response).to redirect_to(projects_url)
     end
   end
@@ -164,6 +165,7 @@ RSpec.describe ProjectsController, :type => :controller do
       project.items.first.update(:done => true)
       delete :clear, { :id => project.to_param }
       expect(project.reload.items.count).to eq(0)
+      expect(Item.unscoped().where({project_id: 1}).first[:deleted_at]).should_not be_nil
     end
 
     it 'should return a flash message notifying that all items are clear' do

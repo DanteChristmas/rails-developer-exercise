@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522023509) do
+ActiveRecord::Schema.define(version: 20170522033606) do
 
   create_table "items", force: :cascade do |t|
     t.string   "action"
@@ -19,16 +19,22 @@ ActiveRecord::Schema.define(version: 20170522023509) do
     t.boolean  "done",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "items", ["id", nil], name: "index_items_on_id_and_COALESCE(deleted_at, false)", unique: true
   add_index "items", ["project_id"], name: "index_items_on_project_id"
+  add_index "items", [nil], name: "index_items_on_delted_at"
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
-  add_index "projects", ["title"], name: "index_projects_on_title", unique: true
+  add_index "projects", ["deleted_at"], name: "index_projects_on_deleted_at"
+  add_index "projects", ["id", nil], name: "index_projects_on_id_and_COALESCE(deleted_at, false)", unique: true
+  add_index "projects", ["title", nil], name: "index_projects_on_title_and_COALESCE(deleted_at, false)", unique: true
 
 end
