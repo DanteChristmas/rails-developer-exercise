@@ -4,6 +4,6 @@ class MakeProjectsAndClientsParanoid < ActiveRecord::Migration
     add_index :projects, :deleted_at
 
     add_column :items, :deleted_at, :datetime
-    add_index :items, :delted_at
+    add_index :items, :deleted_at
   end
 end
